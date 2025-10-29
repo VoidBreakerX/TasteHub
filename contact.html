@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorVerse – Feedback</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="feedback.js"></script>
+
+    <header>
+        <h1>TasteHub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a class="active" href="contact.html">Feedback</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <div class="feedback-container">
+        <h2>Your Feedback Matters</h2>
+
+        <form id="feedbackForm">
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name">
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label>Rate Your Experience</label>
+            <select id="rating">
+                <option value="">Select Rating</option>
+                <option>Excellent</option>
+                <option>Very Good</option>
+                <option>Good</option>
+                <option>Average</option>
+                <option>Poor</option>
+            </select>
+
+            <label>Message</label>
+            <textarea id="message" rows="4" placeholder="Write your feedback here"></textarea>
+
+            <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+        </form>
+
+        <div id="responseMsg" class="success-message"></div>
+    </div>
+
+    <script>
+        function submitFeedback() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let rating = document.getElementById("rating").value;
+            let message = document.getElementById("message").value;
+
+            if (name == "" || email == "" || rating == "" || message == "") {
+                document.getElementById("responseMsg").innerHTML = "All fields are required";
+                document.getElementById("responseMsg").style.color = "red";
+            } else {
+                document.getElementById("responseMsg").innerHTML = "Thank you for your feedback";
+                document.getElementById("responseMsg").style.color = "green";
+
+                document.getElementById("feedbackForm").reset();
+            }
+        }
+    </script>
+
+</body>
+</html>
